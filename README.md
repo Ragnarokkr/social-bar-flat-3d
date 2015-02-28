@@ -1,13 +1,13 @@
 # Subtle 3D-like CSS3 Flat Social Bar
 
-This is a proof of concept for a simple social bar for your social profiles,
+This is a proof of concept for a simple social bar where to put your profiles,
 with subtle 3D-like pushing effect on hovering.
 
 The social bar is built upon an unordered list and supports 5 kinds of
 social networks: **Google Plus**, **Facebook**, **Twitter**, **LinkedIn**, and
 **GitHub**.
 
-It's totally customizable in width, line height, borders (to play with the
+It's totally customizable in width, height, borders (to play with the
 pushing effect), font size, and colors (socials included).
 
 ![Social Bar Screenshot](https://lh3.googleusercontent.com/q82UQkiXVpN8y_oKz6w88Utd7gqm6E8m7rlpbi5I2g=w416-h210)
@@ -15,25 +15,29 @@ pushing effect), font size, and colors (socials included).
 
 ## Customization
 
-Into the SASS file, few variables are defined which can be customized.
+The stylesheet is in SCSS format and provides few customizable variables to
+adapt the social bar to your own tastes:
 
-**$GOOGLE, $TWITTER, $FACEBOOK, $LINKEDIN, $GITHUB**: these variables define the
-button color and influence the color shade when hovering the button.
+VARIABLE | DEFAULT | DESCRIPTION
+:--|:-:|:--
+$FSB_GOOGLE | \#dd4b39 | Google Plus background color
+$FSB_TWITTER | \#00aced | Twitter background color
+$FSB_FACEBOOK | \#3b5998 | Facebook background color
+$FSB_LINKEDIN | \#007bb6 | LinkedIn background color
+$FSB_GITHUB | \#555555 | GitHub background color
+$FSB_WIDTH | 3em | social bar width
+$FSB_LINE_HEIGHT | 2 | social bar's button height
+$FSB_FONT_SIZE | 1.3em | button's font/icon size
+$FSB_TEXT_COLOR | \#ededed | button's font/icon color
+$FSB_HOVER_DARKENING | 10% | button darkening on hover event
+$FSB_BORDER_COLOR | \#000000 | 3D-like border color
+$FSB_BORDER_SIZE | .3em | 3D-like border size
+$FSB_BORDER_OPACITY | .3 | 3D-like border opacity
+$FSB_DEPTH | .3em | how much the button should simulate the pressure?
+$FSB_TRANSITION_TIMING | .2s | animation speed
 
-**$ICON_COLOR**: it defines the color of text/icon used into the button.
-
-**$HOVER_DARKENING**: it defines the percentage of background color darkening
-when hovered.
-
-**$SOCIAL_WIDTH**: this is the whole size of social button. (The social bar width.)
-
-**$SOCIAL_LINE_HEIGHT**: this specifies the height of each button.
-
-**$SOCIAL_FONT_SIZE**: the icon/font size is specified here.
-
-**$SOCIAL_BORDER_LEFT, $SOCIAL_BORDER_RIGHT**: these values define the size of
-both left and right button borders. Playing with these values can give different
-results for the effect.
+> By changing the background color for social buttons, it will influence the
+> darkening shade once the button is hovered.
 
 And, of course, remember to set your own social links :wink:
 
@@ -85,11 +89,10 @@ And, of course, remember to set your own social links :wink:
 </html>
 ```
 
-Setting the side for the social bar is possibile by changing the `left` CSS
-class with `right`.
+The social bar position can be set by changing the `left` with `right` CSS class.
 
-A working example is available also into the attached `index.html` example file
-and on [CodePen.io][codepen].
+It's possibile to test it by using the provided `index.html` example file, or
+via the live demo on [CodePen.io][codepen].
 
 [ionicons]: //code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css
 [reset]: //cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css
