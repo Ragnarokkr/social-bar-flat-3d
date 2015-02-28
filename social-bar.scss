@@ -1,0 +1,90 @@
+/*!
+ * Subtle 3D-like Flat Social Menu
+ *
+ * Copyright (c)2015, Marco Trulla <dev@marcotrulla.it>
+ * Licensed under MIT License
+*/
+
+// OFFICIAL SOCIAL COLORS
+// http://designpieces.com/2012/12/social-media-colours-hex-and-rgb/
+$GOOGLE: #dd4b39;
+$TWITTER: #00aced;
+$FACEBOOK: #3b5998;
+$LINKEDIN: #007bb6;
+$GITHUB: #555555;
+$ICON_COLOR: #ededed;
+$HOVER_DARKENING: 10%;
+
+// SOCIAL BAR LAYOUT
+$SOCIAL_WIDTH: 3em;
+$SOCIAL_LINE_HEIGHT: 2;
+$SOCIAL_FONT_SIZE: 1.3em;
+$SOCIAL_BORDER_LEFT: .3em;
+$SOCIAL_BORDER_RIGHT: .3em;
+
+html { box-sizing: border-box; }
+
+* { box-sizing: inherit; }
+
+.social-bar {
+    transform: translate3d(0,0,0);
+
+    &.left {
+        float: left;
+
+        .social-button {
+            border-left: 0 solid rgba( 0, 0, 0, .3 );
+
+            &:hover { border-left-width: $SOCIAL_BORDER_LEFT; }
+        }
+    }
+
+    &.right {
+        float: right;
+
+        .social-button {
+            float: right;
+            border-right: 0 solid rgba( 0, 0, 0, .3 );
+
+            &:hover { border-right-width: $SOCIAL_BORDER_LEFT; }
+        }
+    }
+
+    .social-button {
+        display: block;
+        width: $SOCIAL_WIDTH;
+        line-height: $SOCIAL_LINE_HEIGHT;
+        font-size: $SOCIAL_FONT_SIZE;
+        text-align: center;
+        color: $ICON_COLOR;
+        transition: all 0.2s linear;
+
+        &:hover { width: $SOCIAL_WIDTH - $SOCIAL_BORDER_LEFT - $SOCIAL_BORDER_RIGHT; }
+
+        &.google {
+            background-color: $GOOGLE;
+            &:hover { background-color: darken($GOOGLE,5%); }
+        }
+
+        &.twitter {
+            background-color: $TWITTER;
+            &:hover { background-color: darken($TWITTER, $HOVER_DARKENING); }
+        }
+
+        &.facebook {
+            background-color: $FACEBOOK;
+            &:hover { background-color: darken($FACEBOOK, $HOVER_DARKENING); }
+        }
+
+        &.linkedin {
+            background-color: $LINKEDIN;
+            &:hover { background-color: darken($LINKEDIN, $HOVER_DARKENING); }
+        }
+
+        &.github {
+            background-color: $GITHUB;
+            &:hover { background-color: darken($GITHUB, $HOVER_DARKENING); }
+        }
+    }
+
+}
