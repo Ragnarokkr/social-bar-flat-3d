@@ -1,5 +1,5 @@
 /*!
- * Subtle 3D-like Flat Social Menu
+ * Subtle 3D-like Flat Social Bar
  *
  * Copyright (c)2015, Marco Trulla <dev@marcotrulla.it>
  * Licensed under MIT License
@@ -7,35 +7,54 @@
 
 // OFFICIAL SOCIAL COLORS
 // http://designpieces.com/2012/12/social-media-colours-hex-and-rgb/
-$GOOGLE: #dd4b39;
-$TWITTER: #00aced;
-$FACEBOOK: #3b5998;
-$LINKEDIN: #007bb6;
-$GITHUB: #555555;
-$ICON_COLOR: #ededed;
-$HOVER_DARKENING: 10%;
+$FSB_GOOGLE: #dd4b39;
+$FSB_TWITTER: #00aced;
+$FSB_FACEBOOK: #3b5998;
+$FSB_LINKEDIN: #007bb6;
+$FSB_GITHUB: #555555;
 
 // SOCIAL BAR LAYOUT
-$SOCIAL_WIDTH: 3em;
-$SOCIAL_LINE_HEIGHT: 2;
-$SOCIAL_FONT_SIZE: 1.3em;
-$SOCIAL_BORDER_LEFT: .3em;
-$SOCIAL_BORDER_RIGHT: .3em;
+$FSB_WIDTH: 3em; // social bar width
+$FSB_LINE_HEIGHT: 2; // social bar's buttons height
+$FSB_FONT_SIZE: 1.3em; // button's font/icon size
+$FSB_TEXT_COLOR: #ededed; // button's font/icon color
+$FSB_HOVER_DARKENING: 10%; // button darkening on hover event
+$FSB_BORDER_COLOR: #000000; // 3D-like border color
+$FSB_BORDER_SIZE: .3em; // 3D-like border size
+$FSB_BORDER_OPACITY: .3; // 3D-like border opacity
+$FSB_DEPTH: .3em; // how much the button should simulate the pressure?
+$FSB_TRANSITION_TIMING: .2s; // animation speed
+
+@mixin translate3d( $params... ) {
+    -webkit-transform: translate3d( $params );
+    -moz-transform: translate3d( $params );
+    -ms-transform: translate3d( $params );
+    -o-transform: translate3d( $params );
+    transform: translate3d( $params );
+}
+
+@mixin transition( $params... ) {
+    -webkit-transition: $params;
+    -moz-transition: $params;
+    -ms-transition: $params;
+    -o-transition: $params;
+    transition: $params;
+}
 
 html { box-sizing: border-box; }
 
-* { box-sizing: inherit; }
+*, *::before, *::after { box-sizing: inherit; }
 
 .social-bar {
-    transform: translate3d(0,0,0);
+    @include translate3d( 0, 0, 0 );
 
     &.left {
         float: left;
 
         .social-button {
-            border-left: 0 solid rgba( 0, 0, 0, .3 );
+            border-left: 0 solid rgba( $FSB_BORDER_COLOR, $FSB_BORDER_OPACITY );
 
-            &:hover { border-left-width: $SOCIAL_BORDER_LEFT; }
+            &:hover { border-left-width: $FSB_BORDER_SIZE; }
         }
     }
 
@@ -44,47 +63,49 @@ html { box-sizing: border-box; }
 
         .social-button {
             float: right;
-            border-right: 0 solid rgba( 0, 0, 0, .3 );
+            border-right: 0 solid rgba( $FSB_BORDER_COLOR, $FSB_BORDER_OPACITY );
 
-            &:hover { border-right-width: $SOCIAL_BORDER_LEFT; }
+            &:hover { border-right-width: $FSB_BORDER_SIZE; }
         }
     }
 
     .social-button {
         display: block;
-        width: $SOCIAL_WIDTH;
-        line-height: $SOCIAL_LINE_HEIGHT;
-        font-size: $SOCIAL_FONT_SIZE;
+        width: $FSB_WIDTH;
+        line-height: $FSB_LINE_HEIGHT;
+        font-size: $FSB_FONT_SIZE;
         text-align: center;
-        color: $ICON_COLOR;
-        transition: all 0.2s linear;
+        color: $FSB_TEXT_COLOR;
+        @include transition( all $FSB_TRANSITION_TIMING linear );
 
-        &:hover { width: $SOCIAL_WIDTH - $SOCIAL_BORDER_LEFT - $SOCIAL_BORDER_RIGHT; }
+        &:hover {
+            width: $FSB_WIDTH - $FSB_BORDER_SIZE - $FSB_DEPTH;
+            color: darken( $FSB_TEXT_COLOR, $FSB_HOVER_DARKENING );
+        }
 
         &.google {
-            background-color: $GOOGLE;
-            &:hover { background-color: darken($GOOGLE,5%); }
+            background-color: $FSB_GOOGLE;
+            &:hover { background-color: darken( $FSB_GOOGLE, $FSB_HOVER_DARKENING ); }
         }
 
         &.twitter {
-            background-color: $TWITTER;
-            &:hover { background-color: darken($TWITTER, $HOVER_DARKENING); }
+            background-color: $FSB_TWITTER;
+            &:hover { background-color: darken( $FSB_TWITTER, $FSB_HOVER_DARKENING ); }
         }
 
         &.facebook {
-            background-color: $FACEBOOK;
-            &:hover { background-color: darken($FACEBOOK, $HOVER_DARKENING); }
+            background-color: $FSB_FACEBOOK;
+            &:hover { background-color: darken( $FSB_FACEBOOK, $FSB_HOVER_DARKENING ); }
         }
 
         &.linkedin {
-            background-color: $LINKEDIN;
-            &:hover { background-color: darken($LINKEDIN, $HOVER_DARKENING); }
+            background-color: $FSB_LINKEDIN;
+            &:hover { background-color: darken( $FSB_LINKEDIN, $FSB_HOVER_DARKENING ); }
         }
 
         &.github {
-            background-color: $GITHUB;
-            &:hover { background-color: darken($GITHUB, $HOVER_DARKENING); }
+            background-color: $FSB_GITHUB;
+            &:hover { background-color: darken( $FSB_GITHUB, $FSB_HOVER_DARKENING ); }
         }
     }
-
 }
